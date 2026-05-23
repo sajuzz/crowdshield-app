@@ -74,6 +74,7 @@ export default function App() {
         <AdminDashboard 
           stadiumState={stadiumState}
           zones={zones} 
+          alerts={alerts}
           auditLogs={auditLogs} 
           onAdminAction={handleAdminAction}
         />

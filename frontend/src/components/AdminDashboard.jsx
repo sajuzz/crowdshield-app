@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export default function AdminDashboard({ 
   stadiumState, 
   zones, 
+  alerts,
   auditLogs,
   onAdminAction
 }) {
