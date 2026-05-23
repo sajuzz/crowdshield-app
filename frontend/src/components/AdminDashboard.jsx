@@ -135,18 +135,37 @@ export default function AdminDashboard({
               type="text" 
               value={broadcastTitle} 
               onChange={e => setBroadcastTitle(e.target.value)} 
-              placeholder="Title"
+              placeholder="Title (Required)"
               style={{ width: '150px', padding: '0.5rem', backgroundColor: 'var(--bg-base)', border: '1px solid var(--border-color)', color: 'var(--text-light)', borderRadius: '4px' }}
             />
             <input 
               type="text" 
               value={broadcastMessage} 
               onChange={e => setBroadcastMessage(e.target.value)} 
-              placeholder="Message..."
+              placeholder="Message... (Required)"
               style={{ flex: 1, padding: '0.5rem', backgroundColor: 'var(--bg-base)', border: '1px solid var(--border-color)', color: 'var(--text-light)', borderRadius: '4px' }}
             />
-            <button className="button-primary" onClick={handleBroadcast}>Send Broadcast</button>
+            <button 
+              className="button-primary" 
+              onClick={handleBroadcast}
+              disabled={!broadcastTitle.trim() || !broadcastMessage.trim()}
+              style={{ opacity: (!broadcastTitle.trim() || !broadcastMessage.trim()) ? 0.5 : 1, cursor: (!broadcastTitle.trim() || !broadcastMessage.trim()) ? 'not-allowed' : 'pointer' }}
+            >
+              Send Broadcast
+            </button>
           </div>
+          
+          {/* Show Active Broadcasts to the Admin */}
+          {alerts.filter(a => !a.isEmergency).length > 0 && (
+            <div style={{ marginTop: '1rem', padding: '0.5rem', backgroundColor: 'rgba(249, 115, 22, 0.1)', border: '1px dashed var(--status-high)', borderRadius: '4px' }}>
+              <p style={{ fontSize: '0.75rem', color: 'var(--status-high)', marginBottom: '0.5rem' }}>Currently Active Broadcasts (Visible to Attendees):</p>
+              {alerts.filter(a => !a.isEmergency).map((a, i) => (
+                <div key={i} style={{ fontSize: '0.875rem' }}>
+                  <strong>{a.title}:</strong> {a.message}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
