@@ -7,7 +7,7 @@ import AdminLogin from './components/AdminLogin';
 const socket = io('/', { autoConnect: false });
 
 export default function App() {
-  const [view, setView] = useState('admin');
+  const [view, setView] = useState('attendee');
   const [authToken, setAuthToken] = useState(null);
   const [stadiumState, setStadiumState] = useState({});
   const [zones, setZones] = useState([]);
