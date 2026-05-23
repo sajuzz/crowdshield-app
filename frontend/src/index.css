@@ -1,0 +1,143 @@
+:root {
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+
+  /* Operational Colors */
+  --status-low: #10b981; /* Green */
+  --status-moderate: #facc15; /* Yellow */
+  --status-high: #f97316; /* Orange */
+  --status-critical: #ef4444; /* Red */
+  
+  --accent-blue: #3b82f6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+select, input {
+  font-family: inherit;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Premium Card / Panel Style */
+.panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.panel-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.button-primary {
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+}
+
+.button-outline {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.button-danger {
+  background-color: var(--status-critical);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+/* Flex & Grid utilities */
+.flex-row { display: flex; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+
+.grid-cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.grid-cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+/* Status Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-low { background-color: rgba(16, 185, 129, 0.2); color: var(--status-low); border: 1px solid var(--status-low); }
+.badge-moderate { background-color: rgba(250, 204, 21, 0.2); color: var(--status-moderate); border: 1px solid var(--status-moderate); }
+.badge-high { background-color: rgba(249, 115, 22, 0.2); color: var(--status-high); border: 1px solid var(--status-high); }
+.badge-critical { background-color: rgba(239, 68, 68, 0.2); color: var(--status-critical); border: 1px solid var(--status-critical); }
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.badge-emergency { 
+  background-color: var(--status-critical); 
+  color: white; 
+  animation: flash 1s infinite;
+}
+
+.feed-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+}
+
+.feed-item:last-child {
+  border-bottom: none;
+}

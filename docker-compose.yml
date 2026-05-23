@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  stadiumops:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./audit.log:/app/audit.log
+    restart: unless-stopped
